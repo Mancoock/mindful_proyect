@@ -205,7 +205,7 @@ export async function POST(req: NextRequest) {
     const content = json?.content?.[0]?.text ?? "";
     const parsed = extractFirstJsonBlock(content);
     if (!parsed) {
-      console.log("❌ No se encontró JSON en la respuesta bruta");
+      console.log(" No se encontró JSON en la respuesta bruta");
       return NextResponse.json(
         { error: "No JSON found in upstream response" },
         { status: 502 }
@@ -213,7 +213,7 @@ export async function POST(req: NextRequest) {
     }
 
     const sanitized = sanitizeResponse(parsed);
-    console.log("✅ OK ->", usedModel);
+    console.log(" OK ->", usedModel);
     console.log("=== FIN /api/ai ===");
 
     return NextResponse.json({
